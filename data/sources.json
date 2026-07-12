@@ -1,0 +1,34 @@
+{
+  "$comment": "Curated official U.S. government UAP/UFO document releases. Used by `npm run ingest`. Government sites (dni.gov, media.defense.gov) sometimes block non-browser clients — if a download fails, open the URL in a browser, save the PDF into a folder, and run `npm run ingest -- --dir <folder>` instead. Landing pages for finding new releases: https://www.aaro.mil/Reports/ , https://www.dni.gov/index.php/newsroom/reports-publications , https://www.archives.gov/research/topics/uaps , https://www.cia.gov/readingroom/collection/ufos , https://vault.fbi.gov/UFO",
+  "sources": [
+    {
+      "name": "ODNI-Preliminary-Assessment-UAP-2021.pdf",
+      "title": "ODNI — Preliminary Assessment: Unidentified Aerial Phenomena (June 2021)",
+      "url": "https://www.dni.gov/files/ODNI/documents/assessments/Prelimary-Assessment-UAP-20210625.pdf"
+    },
+    {
+      "name": "ODNI-2022-Annual-Report-UAP.pdf",
+      "title": "ODNI — 2022 Annual Report on Unidentified Aerial Phenomena",
+      "url": "https://www.dni.gov/files/ODNI/documents/assessments/Unclassified-2022-Annual-Report-UAP.pdf"
+    },
+    {
+      "name": "AARO-Historical-Record-Report-Vol1-2024.pdf",
+      "title": "AARO — Report on the Historical Record of U.S. Government Involvement with UAP, Volume 1 (March 2024)",
+      "url": "https://media.defense.gov/2024/Mar/08/2003409233/-1/-1/0/DOPSR-CLEARED-508-COMPLIANT-HRRV1-08-MAR-2024-FINAL.PDF"
+    },
+    {
+      "type": "page",
+      "title": "National Archives — UAP topic page (crawled)",
+      "url": "https://www.archives.gov/research/topics/uaps",
+      "depth": 1,
+      "match": "uap|ufo|pbb|blue.?book|unidentified"
+    },
+    {
+      "type": "page",
+      "title": "DoD UAP Records Release — war.gov/UFO interactive (document list crawled from its uap-data.csv)",
+      "url": "https://www.war.gov/UFO/",
+      "depth": 1,
+      "match": "medialink/ufo/(?!.*/thumbnails/)"
+    }
+  ]
+}

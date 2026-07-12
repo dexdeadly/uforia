@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /media/dex/data_disc/DevOps/Personal/uforia/src)",
+      "Bash(mv /media/dex/data_disc/DevOps/Personal/uforia/app /media/dex/data_disc/DevOps/Personal/uforia/src/app)",
+      "Bash(mv /media/dex/data_disc/DevOps/Personal/uforia/components /media/dex/data_disc/DevOps/Personal/uforia/src/components)",
+      "Bash(mv /media/dex/data_disc/DevOps/Personal/uforia/hooks /media/dex/data_disc/DevOps/Personal/uforia/src/hooks)",
+      "Bash(mv /media/dex/data_disc/DevOps/Personal/uforia/lib /media/dex/data_disc/DevOps/Personal/uforia/src/lib)",
+      "Bash(npm install *)",
+      "Bash(yarn --version)",
+      "Read(//opt/hostedapp/**)",
+      "Read(//home/dex/.var/app/com.vscodium.codium/data/node/**)",
+      "Read(//home/dex/.nvm/versions/node/**)",
+      "Read(//usr/local/bin/**)",
+      "Read(//usr/**)",
+      "Bash(find /home/dex -name \"node\" -type f 2>/dev/null | head -10 && find /usr/local -name \"node\" -type f 2>/dev/null | head -5 && ls /home/dex/.nvm 2>/dev/null)",
+      "Read(//home/dex/**)",
+      "Read(//home/dex/.nvm/**)",
+      "Bash(/home/dex/.nvm/versions/node/v22.9.0/bin/npm install *)",
+      "Bash(/home/dex/.nvm/versions/node/v22.9.0/bin/node --version)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm install)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm audit)",
+      "Read(//usr/lib/**)",
+      "Bash(systemctl is-active *)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm install @anthropic-ai/sdk)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm install zod@^3.25.0 @anthropic-ai/sdk)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm run build)",
+      "Bash(curl -s http://localhost:3000/api/documents)",
+      "Bash(curl -sv --max-time 3 http://localhost:3000/api/health)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npx tsx --require dotenv/config /tmp/claude-1000/-media-dex-data-disc-DevOps-Personal-uforia/1e21b810-5243-47c2-a860-2157a0e7ce8e/scratchpad/dbtest2.ts)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npx tsx --require dotenv/config .dbtest.tmp.ts)",
+      "Bash(echo \"tsc: $?\")",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm run ingest -- --check --page https://www.war.gov/UFO/)",
+      "Bash(curl -s --max-time 30 -A \"Mozilla/5.0 \\(X11; Linux x86_64; rv:127.0\\) Gecko/20100101 Firefox/127.0\" \"https://www.war.gov/UFO/\" -o /tmp/claude-1000/-media-dex-data-disc-DevOps-Personal-uforia/1e21b810-5243-47c2-a860-2157a0e7ce8e/scratchpad/ufo.html)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm run ingest -- --check --page https://www.war.gov/UFO/ --match 'uap|ufo')",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm run ingest -- --check --page https://www.war.gov/UFO/ --match 'uap|ufo' --limit 30)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm run ingest -- --check --page https://www.war.gov/UFO/ --match medialink/ufo/.*/documents/ --limit 15)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm run ingest -- --check --page https://www.war.gov/UFO/ --match medialink/ufo/.*/documents/)",
+      "Bash(PATH=/home/dex/.nvm/versions/node/v22.9.0/bin:__TRACKED_VAR__ npm run ingest -- --check --page https://www.war.gov/UFO/ --match 'medialink/ufo/\\(?!.*/thumbnails/\\)')"
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Document {
+  id               String   @id @default(cuid())
+  fileName         String
+  contentType      String
+  fileSize         Int
+  cloudStoragePath String
+  isPublic         Boolean  @default(false)
+  status           String   @default("pending") // pending, processing, ready, error
+  extractedText    String?  @db.Text
+  errorMessage     String?
+  pageCount        Int?
+  uploadedAt       DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  chunks DocumentChunk[]
+
+  @@index([status])
+  @@index([uploadedAt])
+}
+
+model DocumentChunk {
+  id         String @id @default(cuid())
+  documentId String
+  chunkText  String @db.Text
+  chunkIndex Int
+  embedding  Float[]
+
+  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  sessionId String
+  role      String   // user, assistant
+  content   String   @db.Text
+  sources   String?  @db.Text // JSON array of source references
+  createdAt DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([createdAt])
+}

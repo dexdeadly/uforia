@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Uforia — full local stack: app + PostgreSQL
+#
+#   docker compose up --build
+#
+# Then open the app at http://localhost:3000. Uploaded files are stored on a
+# named volume mounted at /app/uploads.
+# ─────────────────────────────────────────────────────────────────────────────
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: uforia
+      POSTGRES_PASSWORD: uforia
+      POSTGRES_DB: uforia
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U uforia"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: "postgresql://uforia:uforia@db:5432/uforia?connect_timeout=15"
+      UPLOADS_DIR: "/app/uploads"
+      # Optional — enables LLM answers. Without it, extractive answers are returned.
+      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+      CHAT_MODEL: "claude-opus-4-8"
+      EMBEDDING_MODEL: "Xenova/all-MiniLM-L6-v2"
+      NEXT_PUBLIC_SITE_URL: "http://localhost:3000"
+    volumes:
+      - uploads_data:/app/uploads
+    ports:
+      - "3000:3000"
+
+volumes:
+  db_data:
+  uploads_data:
